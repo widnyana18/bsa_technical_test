@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_input/controllers/arithmetic_provider.dart';
 import 'package:form_input/controllers/login_provider.dart';
 import 'package:form_input/ui/views/number_operation_view.dart';
 import 'package:provider/provider.dart';
@@ -43,8 +44,14 @@ class _LoginViewState extends State<LoginView> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Login'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          'Login',
+          style: txtTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Center(
         child: AspectRatio(
@@ -101,10 +108,13 @@ class _LoginViewState extends State<LoginView> {
     if (notifier.isValid) {
       usernameHistory = notifier.username!;
 
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => NumberOperationView(),
+            builder: (context) => ChangeNotifierProvider(
+              create: (context) => ArithmeticProvider(),
+              child: NumberOperationView(),
+            ),
           ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
