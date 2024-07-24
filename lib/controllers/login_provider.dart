@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_input/services/local_storage_service.dart';
 
 class LoginProvider extends ChangeNotifier {
   String? username;
@@ -24,7 +25,9 @@ class LoginProvider extends ChangeNotifier {
   void validateUsernamePassword({
     required String usernameInput,
     required String passwordInput,
-  }) {
+  }) async {
+    // final usernameLocalData = await LocalStorageService.readUser();
+    // print("DATAAA : $usernameLocalData");
     if (usernameInput == 'admin' && passwordInput == '4dm1n') {
       username = usernameInput;
       password = passwordInput;
@@ -32,6 +35,7 @@ class LoginProvider extends ChangeNotifier {
     } else {
       isValid = false;
     }
+
     notifyListeners();
   }
 }

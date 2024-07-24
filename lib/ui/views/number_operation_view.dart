@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:form_input/controllers/arithmetic_provider.dart';
 import 'package:form_input/controllers/login_provider.dart';
 import 'package:form_input/controllers/user_provider.dart';
+import 'package:form_input/model/user.dart';
+import 'package:form_input/services/local_storage_service.dart';
 import 'package:form_input/ui/views/login_view.dart';
 import 'package:form_input/ui/views/profile_view.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +28,7 @@ class _NumberOperationViewState extends State<NumberOperationView> {
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
     final notifier = context.watch<ArithmeticProvider>();
+    final UserProvider userProvider = UserProvider();
 
     _firstNumController.addListener(
       () => context
@@ -115,6 +118,7 @@ class _NumberOperationViewState extends State<NumberOperationView> {
               SizedBox(height: 12),
               FilledButton(
                   onPressed: () {
+                    LocalStorageService.removeUserData();
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -129,11 +133,12 @@ class _NumberOperationViewState extends State<NumberOperationView> {
               SizedBox(height: 12),
               FilledButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Provider(
-                          create: (context) => UserProvider(),
+                        builder: (context) => FutureProvider<List<User>>(
+                          create: (context) => userProvider.getData(),
+                          initialData: const [],
                           child: ProfileView(),
                         ),
                       ),

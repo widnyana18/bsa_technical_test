@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_input/controllers/arithmetic_provider.dart';
 import 'package:form_input/controllers/login_provider.dart';
+import 'package:form_input/services/local_storage_service.dart';
 import 'package:form_input/ui/views/number_operation_view.dart';
 import 'package:provider/provider.dart';
 
@@ -12,13 +13,13 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final _usernameController = TextEditingController();
   final _pswController = TextEditingController();
-  String? usernameHistory;
 
-  @override
-  void initState() {
-    _usernameController.text = usernameHistory ?? '';
-    super.initState();
-  }
+  // @override
+  // void initState() async {
+  //   super.initState();
+  //   final username = await LocalStorageService.readUser();
+  //   _usernameController = TextEditingController(text: username);
+  // }
 
   @override
   void dispose() {
@@ -106,7 +107,10 @@ class _LoginViewState extends State<LoginView> {
         );
 
     if (notifier.isValid) {
-      usernameHistory = notifier.username!;
+      LocalStorageService.storeUserData(
+        username: notifier.username!,
+        password: notifier.password!,
+      );
 
       Navigator.pushReplacement(
           context,
