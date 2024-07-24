@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:form_input/controllers/login_provider.dart';
 import 'package:form_input/ui/routes/app_router.dart';
 import 'package:form_input/ui/views/login_view.dart';
-import 'package:form_input/ui/views/profile_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,11 +20,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // onGenerateRoute: generateRoute,
-      home: ProfileView(),
-      // ChangeNotifierProvider(
-      //   create: (context) => LoginProvider(),
-      //   child: LoginView(),
-      // ),
+      home: ChangeNotifierProvider(
+        create: (context) => LoginProvider(),
+        child: LoginView(),
+      ),
     );
   }
 }
