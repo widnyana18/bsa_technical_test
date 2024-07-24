@@ -12,7 +12,7 @@ class ProfileDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        leading: BackButton(),
+        leading: const BackButton(),
         title: Text(
           'Profile Details',
           style: txtTheme.titleLarge?.copyWith(
@@ -34,7 +34,7 @@ class ProfileDetailsView extends StatelessWidget {
                 style:
                     txtTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -42,53 +42,53 @@ class ProfileDetailsView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Username :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.username),
-                        SizedBox(height: 30),
-                        Text(
+                        const SizedBox(height: 30),
+                        const Text(
                           'Email :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.email),
                       ],
                     ),
                   ),
-                  SizedBox(width: 30),
+                  const SizedBox(width: 30),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Phone :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.phone),
-                        SizedBox(height: 30),
-                        Text(
+                        const SizedBox(height: 30),
+                        const Text(
                           'Website :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.website),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 'Address',
                 textAlign: TextAlign.center,
                 style:
                     txtTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -96,69 +96,69 @@ class ProfileDetailsView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Street :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.address.street),
-                        SizedBox(height: 30),
-                        Text(
+                        const SizedBox(height: 30),
+                        const Text(
                           'Suite :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.address.suite),
                       ],
                     ),
                   ),
-                  SizedBox(width: 30),
+                  const SizedBox(width: 30),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'City :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.address.city),
-                        SizedBox(height: 30),
-                        Text(
+                        const SizedBox(height: 30),
+                        const Text(
                           'Zip Code :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.address.zipCode),
                       ],
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 'Coordinate',
                 textAlign: TextAlign.center,
                 style:
                     txtTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Flexible(child: Text('Latitude : ${user.address.geo.lat}')),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Flexible(child: Text('Longitude : ${user.address.geo.lng}')),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 'Company',
                 textAlign: TextAlign.center,
                 style:
                     txtTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -166,39 +166,39 @@ class ProfileDetailsView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Name :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.company.name),
                       ],
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Catch Phrase :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.company.catchPhrase),
                       ],
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
+                        const Text(
                           'Bs :',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(user.company.bs),
                       ],
                     ),

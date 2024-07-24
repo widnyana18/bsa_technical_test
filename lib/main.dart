@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:form_input/controllers/arithmetic_provider.dart';
 import 'package:form_input/controllers/login_provider.dart';
-import 'package:form_input/controllers/user_provider.dart';
-import 'package:form_input/model/user.dart';
 import 'package:form_input/services/local_storage_service.dart';
-import 'package:form_input/ui/routes/app_router.dart';
 import 'package:form_input/ui/views/login_view.dart';
 import 'package:form_input/ui/views/number_operation_view.dart';
-import 'package:form_input/ui/views/profile_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => LoginProvider(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,15 +33,14 @@ class MyApp extends StatelessWidget {
         future: LocalStorageService.readUser(),
         builder: (context, snapshot) {
           if (snapshot.data != null) {
-            print('CHECK LOGIN : ${snapshot.data}');
             return ChangeNotifierProvider(
               create: (context) => ArithmeticProvider(),
-              child: NumberOperationView(),
+              child: const NumberOperationView(),
             );
           }
           return ChangeNotifierProvider.value(
             value: LoginProvider(),
-            child: LoginView(),
+            child: const LoginView(),
           );
         },
       ),

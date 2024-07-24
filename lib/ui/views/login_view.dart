@@ -6,6 +6,8 @@ import 'package:form_input/ui/views/number_operation_view.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
+  const LoginView({super.key});
+
   @override
   State<LoginView> createState() => _LoginViewState();
 }
@@ -67,31 +69,31 @@ class _LoginViewState extends State<LoginView> {
                 style:
                     txtTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               TextFormField(
                 controller: _usernameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   label: Text('Username'),
                   hintText: 'test@example.com',
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: _pswController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   label: Text('Password'),
                   hintText: 'Gunakan huruf, numeric, capital, dan symbol',
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               FilledButton(
                 onPressed: notifier.isInputNotEmpty
                     ? () {
                         _submit(context, notifier);
                       }
                     : null,
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
@@ -117,12 +119,12 @@ class _LoginViewState extends State<LoginView> {
           MaterialPageRoute(
             builder: (context) => ChangeNotifierProvider(
               create: (context) => ArithmeticProvider(),
-              child: NumberOperationView(),
+              child: const NumberOperationView(),
             ),
           ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Username atau Password Tidak Valid'),
         ),
       );

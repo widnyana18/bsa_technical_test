@@ -9,6 +9,8 @@ import 'package:form_input/ui/views/profile_view.dart';
 import 'package:provider/provider.dart';
 
 class NumberOperationView extends StatefulWidget {
+  const NumberOperationView({super.key});
+
   @override
   State<NumberOperationView> createState() => _NumberOperationViewState();
 }
@@ -60,21 +62,21 @@ class _NumberOperationViewState extends State<NumberOperationView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Silahkan pilih mode operasi :'),
-              SizedBox(height: 12),
+              const Text('Silahkan pilih mode operasi :'),
+              const SizedBox(height: 12),
               Row(
                 children: [
                   Flexible(
                     child: CheckboxListTile(
-                        title: Text('Penjumlahan'),
+                        title: const Text('Penjumlahan'),
                         value: notifier.sumMode,
                         onChanged:
                             context.read<ArithmeticProvider>().sumModeChanged),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Flexible(
                     child: CheckboxListTile(
-                        title: Text('Perkalian'),
+                        title: const Text('Perkalian'),
                         value: notifier.multipleMode,
                         onChanged: context
                             .read<ArithmeticProvider>()
@@ -82,40 +84,42 @@ class _NumberOperationViewState extends State<NumberOperationView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text('Silahkan masukan bilangan :'),
-              SizedBox(height: 12),
+              const Text('Silahkan masukan bilangan :'),
+              const SizedBox(height: 12),
               Row(
                 children: [
                   Flexible(
                     child: TextField(
                       controller: _firstNumController,
-                      decoration: InputDecoration(labelText: 'Angka Pertama'),
+                      decoration:
+                          const InputDecoration(labelText: 'Angka Pertama'),
                       keyboardType: TextInputType.number,
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   Flexible(
                     child: TextField(
                       controller: _secondNumController,
-                      decoration: InputDecoration(labelText: 'Angka Kedua'),
+                      decoration:
+                          const InputDecoration(labelText: 'Angka Kedua'),
                       keyboardType: TextInputType.number,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Text(
                 'Hasil : ${notifier.result.toString()}',
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               FilledButton(
                   onPressed: notifier.isInputValid ? _operation : null,
-                  child: Text('Hitung')),
-              SizedBox(height: 12),
+                  child: const Text('Hitung')),
+              const SizedBox(height: 12),
               FilledButton(
                   onPressed: () {
                     LocalStorageService.removeUserData();
@@ -124,13 +128,13 @@ class _NumberOperationViewState extends State<NumberOperationView> {
                       MaterialPageRoute(
                         builder: (context) => ChangeNotifierProvider.value(
                           value: LoginProvider(),
-                          child: LoginView(),
+                          child: const LoginView(),
                         ),
                       ),
                     );
                   },
-                  child: Text('Logout')),
-              SizedBox(height: 12),
+                  child: const Text('Logout')),
+              const SizedBox(height: 12),
               FilledButton(
                   onPressed: () {
                     Navigator.push(
@@ -139,12 +143,12 @@ class _NumberOperationViewState extends State<NumberOperationView> {
                         builder: (context) => FutureProvider<List<User>>(
                           create: (context) => userProvider.getData(),
                           initialData: const [],
-                          child: ProfileView(),
+                          child: const ProfileView(),
                         ),
                       ),
                     );
                   },
-                  child: Text('Load Data')),
+                  child: const Text('Load Data')),
             ],
           ),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:form_input/controllers/user_provider.dart';
 import 'package:form_input/model/user.dart';
 import 'package:form_input/ui/views/profile_details_view.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +18,7 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: const BackButton(),
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
           'Profile',
