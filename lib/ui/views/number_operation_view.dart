@@ -132,7 +132,10 @@ class _NumberOperationViewState extends State<NumberOperationView> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProfileView(),
+                        builder: (context) => Provider(
+                          create: (context) => UserProvider(),
+                          child: ProfileView(),
+                        ),
                       ),
                     );
                   },

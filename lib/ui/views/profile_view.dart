@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_input/controllers/user_provider.dart';
 import 'package:form_input/model/user.dart';
+import 'package:form_input/ui/views/profile_details_view.dart';
 import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
@@ -14,9 +15,11 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
+    final users = context.watch<List<User>>();
 
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(),
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
           'Profile',
@@ -26,27 +29,24 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text('Silahkan pilih mode operasi :'),
-          SizedBox(height: 12),
-          FutureProvider<List<User>>(
-              create: (context) => UserProvider.getData(),
-              initialData: [],
-              builder: (context, child) {
-                final users = context.watch<List<User>>();
-
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) {
-                    return Text(users[index].name);
-                  },
-                );
-              })
-        ],
+      body: GridView.builder(
+        itemCount: users.length,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(users[index].name),
+            subtitle: Text(users[index].phone),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfileDetailsView(user: users[index]),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }

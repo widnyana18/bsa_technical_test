@@ -3,7 +3,7 @@ class Address {
   final String suite;
   final String city;
   final String zipCode;
-  final String geo;
+  final Geo geo;
 
   Address({
     required this.street,
@@ -16,11 +16,11 @@ class Address {
 // `fromJson` creates a Address object from a JSON map.
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
-        street: json["street"],
-        suite: json["suite"],
-        city: json["city"],
-        zipCode: json["zipcode"],
-        geo: json["geo"],
+        street: json["street"] as String,
+        suite: json["suite"] as String,
+        city: json["city"] as String,
+        zipCode: json["zipcode"] as String,
+        geo: Geo.fromJson(json["geo"] as Map<String, dynamic>),
       );
 }
 
@@ -36,7 +36,7 @@ class Geo {
 // `fromJson` creates a Geo object from a JSON map.
 
   factory Geo.fromJson(Map<String, dynamic> json) => Geo(
-        lat: json["lat"],
-        lng: json["lng"],
+        lat: json["lat"] as String,
+        lng: json["lng"] as String,
       );
 }
