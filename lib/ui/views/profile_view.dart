@@ -29,24 +29,33 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
       ),
-      body: GridView.builder(
-        itemCount: users.length,
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(users[index].name),
-            subtitle: Text(users[index].phone),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProfileDetailsView(user: users[index]),
+      body: Center(
+        child: AspectRatio(
+          aspectRatio: .6,
+          child: ListView.builder(
+            itemCount: users.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(
+                  users[index].name,
+                  style: txtTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w700),
                 ),
+                subtitle: Text(users[index].phone),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileDetailsView(
+                        user: users[index],
+                      ),
+                    ),
+                  );
+                },
               );
             },
-          );
-        },
+          ),
+        ),
       ),
     );
   }
